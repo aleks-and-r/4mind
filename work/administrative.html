@@ -57,27 +57,27 @@
               </li>
 
               <li>
-                <a  data-type="red" href="#0">Residential</a>
+                <a data-type="red" href="#0" onclick="res()">Residential</a>
               </li>
 
               <li>
-                <a data-type="blue" href="#0">Commercial</a>
+                <a data-type="blue" href="#0" onclick="res()">Commercial</a>
               </li>
 
               <li>
-                <a data-type="green" href="#0">Culture</a>
+                <a data-type="green" href="#0" onclick="cul()">Culture</a>
               </li>
 
               <li>
-                <a class="selected" data-type="yellow" href="#0">Administrative</a>
+                <a class="selected" data-type="yellow" href="#0" onclick="adm()">Administrative</a>
               </li>
 
               <li>
-                <a data-type="black" href="#0">Public space</a>
+                <a data-type="black" href="#0" onclick="pub()">Public space</a>
               </li>
 
               <li>
-                <a data-type="purple" href="#0">Interior</a>
+                <a data-type="purple" href="#0" onclick="int()">Interior</a>
               </li>
             </ul>
           </nav>
@@ -736,6 +736,50 @@
   <script src="../js/main.js"></script> <!-- Gem jQuery -->
 
   <script>
+     function res() {
+      console.log('residential');
+      history.pushState({}, null, '/work/residential.html');
+    }
+    function com() {
+      console.log('commercial');
+      history.pushState({}, null, '/work/commercial.html');
+    }
+    function cul() {
+      console.log('culture');
+      history.pushState({}, null, '/work/culture.html');
+    }
+    function adm() {
+      console.log('administrative');
+      history.pushState({}, null, '/work/administrative.html');
+    }
+    function pub() {
+      console.log('public');
+      history.pushState({}, null, '/work/public_space.html');
+    }
+    function int() {
+      console.log('interior');
+      history.pushState({}, null, '/work/interior.html');
+    }
+    if(document.referrer !== location.href) {
+      localStorage.loc = location.pathname;
+    }
+    function reloadPage() {
+      // The last "domLoading" Time //
+      var currentDocumentTimestamp =
+        new Date(performance.timing.domLoading).getTime();
+      // Current Time //
+      var now = Date.now();
+      // Ten Seconds //
+      var tenSec = 10 * 1000;
+      // Plus Ten Seconds //
+      var plusTenSec = currentDocumentTimestamp + tenSec;
+      if (now > plusTenSec) {
+        console.log('reloading');
+        location.reload();
+      } else { }
+    }
+    reloadPage();
+
     $(document).ready(function () {
 
       $('.work_icon').on('click', function () {
