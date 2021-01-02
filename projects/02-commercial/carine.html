@@ -26,7 +26,7 @@
 
 </head>
 
-<body onbeforeunload="HandleBackFunctionality()">
+<body>
   <main>
     <header>
       <div class="logo">
@@ -263,6 +263,11 @@
 console.log('back');
 location.href()
     }
+    
+    window.addEventListener("unload", function(event) { 
+      console.log('unloading2');
+      location.reload();
+     });
     // this.window.onload = function () {
     //   if (typeof history.pushState === "function") {
     //     history.pushState("jibberish", null, null);
