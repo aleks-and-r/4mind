@@ -84,6 +84,25 @@
               };
             }
           }
+          if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      this.window.onload = function () {
+        if (typeof history.pushState === "function") {
+          history.pushState("jibberish", null, null);
+          // history.pushState("jibberish", null, null);
+          window.onpopstate = function () {
+            console.log(location.pathname);
+            console.log('popstate');
+            history.pushState('', null, '/main.html');
+            location.reload()
+            location.pathname = "main.html";
+            // history.pushState('', null, '/selected_work.html');
+            // location.reload()
+            // Handle the back (or forward) buttons here
+            // Will NOT handle refresh, use onbeforeunload for this.
+          };
+        }
+      }
+    }
         </script>
     </body>
 </html>
