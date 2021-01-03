@@ -815,7 +815,17 @@
       }
     }
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      history.pushState('', null, '/selected_work.html');
+      if (typeof history.pushState === "function") {
+        history.pushState("jibberish", null, null);
+        window.onpopstate = function () {
+          console.log(location.pathname);
+          console.log('popstate');
+          history.pushState('', null, '/selected_work.html');
+          location.reload()
+          // Handle the back (or forward) buttons here
+          // Will NOT handle refresh, use onbeforeunload for this.
+        };
+      }
     }
   </script>
 
