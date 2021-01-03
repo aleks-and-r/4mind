@@ -814,7 +814,7 @@
         };
       }
     }
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    if (/Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       this.window.onbeforeunload = function () {
         if (typeof history.pushState === "function") {
           history.pushState("jibberish", null, null);
