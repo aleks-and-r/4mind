@@ -736,6 +736,9 @@
   <script src="../js/main.js"></script> <!-- Gem jQuery -->
 
   <script>
+    setTimeout(() => {
+      adm();
+    }, 20) 
     function res() {
       console.log('residential');
       history.pushState({}, null, '/work/residential.html');
@@ -750,7 +753,8 @@
     }
     function adm() {
       console.log('administrative');
-      history.pushState({}, null, '/work/administrative.html');
+      window.scrollTo(0, 0);
+      // history.pushState({'page_id': 'adm'}, null, '/work/administrative.html');
     }
     function pub() {
       console.log('public');
@@ -782,53 +786,74 @@
         });
       });
     });
-    this.window.onload = function () {
-      if (typeof history.pushState === "function") {
-        history.pushState("jibberish", null, null);
-        window.onpopstate = function () {
-          console.log(location.pathname);
-          history.pushState('', null, '/selected_work.html');
-          location.reload()
-          // Handle the back (or forward) buttons here
-          // Will NOT handle refresh, use onbeforeunload for this.
-        };
-      }
-      else {
-        var ignoreHashChange = true;
-        window.onhashchange = function () {
-          if (!ignoreHashChange) {
-            ignoreHashChange = true;
-            window.location.hash = Math.random();
-            // Detect and redirect change here
-            // Works in older FF and IE9
-            // * it does mess with your hash symbol (anchor?) pound sign
-            // delimiter on the end of the URL
-          }
-          else {
-            ignoreHashChange = false;
-          }
-        };
-      }
+    window.addEventListener('popstate', function(event) {
+    // The popstate event is fired each time when the current history entry changes.
+
+    var r = true;
+    alert('adm')
+
+    if (r == true) {
+        // Call Back button programmatically as per user confirmation.
+        console.log('r is true');
+        location.pathname = '/selected_work.html'
+        // history.back();
+        // Uncomment below line to redirect to the previous page instead.
+        // window.location = document.referrer // Note: IE11 is not supporting this.
+    } else {
+        // Stay on the current page.
+        history.pushState(null, null, window.location.pathname);
     }
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      this.window.onload = function () {
-        if (typeof history.pushState === "function") {
-          history.pushState("jibberish", null, null);
-          // history.pushState("jibberish", null, null);
-          window.onpopstate = function () {
-            console.log(location.pathname);
-            console.log('popstate');
-            history.pushState('', null, '/selected_work.html');
-            location.reload()
-            location.pathname = "selected_work.html";
-            // history.pushState('', null, '/selected_work.html');
-            // location.reload()
-            // Handle the back (or forward) buttons here
-            // Will NOT handle refresh, use onbeforeunload for this.
-          };
-        }
-      }
-    }
+
+    history.pushState(null, null, window.location.pathname);
+
+}, false);
+    // this.window.onload = function () {
+    //   if (typeof history.pushState === "function") {
+    //     history.pushState("jibberish", null, null);
+    //     window.onpopstate = function () {
+    //       console.log(location.pathname);
+    //       history.pushState('', null, '/selected_work.html');
+    //       location.reload()
+    //       // Handle the back (or forward) buttons here
+    //       // Will NOT handle refresh, use onbeforeunload for this.
+    //     };
+    //   }
+    //   else {
+    //     var ignoreHashChange = true;
+    //     window.onhashchange = function () {
+    //       if (!ignoreHashChange) {
+    //         ignoreHashChange = true;
+    //         window.location.hash = Math.random();
+    //         // Detect and redirect change here
+    //         // Works in older FF and IE9
+    //         // * it does mess with your hash symbol (anchor?) pound sign
+    //         // delimiter on the end of the URL
+    //       }
+    //       else {
+    //         ignoreHashChange = false;
+    //       }
+    //     };
+    //   }
+    // }
+    // if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    //   this.window.onload = function () {
+    //     if (typeof history.pushState === "function") {
+    //       history.pushState("jibberish", null, null);
+    //       // history.pushState("jibberish", null, null);
+    //       window.onpopstate = function () {
+    //         console.log(location.pathname);
+    //         console.log('popstate');
+    //         history.pushState('', null, '/selected_work.html');
+    //         location.reload()
+    //         location.pathname = "selected_work.html";
+    //         // history.pushState('', null, '/selected_work.html');
+    //         // location.reload()
+    //         // Handle the back (or forward) buttons here
+    //         // Will NOT handle refresh, use onbeforeunload for this.
+    //       };
+    //     }
+    //   }
+    // }
   </script>
 
 </body>

@@ -736,31 +736,32 @@
   <script src="../js/main.js"></script> <!-- Gem jQuery -->
 
   <script>
-
-    localStorage.loc = location.pathname
+setTimeout(() => {
+      res();
+    }, 20) 
     function res() {
       console.log('residential');
-      history.replaceState({}, null, '/work/residential.html');
+      // history.pushState({page_id: "res"}, null, '/work/residential.html');
     }
     function com() {
       console.log('commercial');
-      history.replaceState({}, null, '/work/commercial.html');
+      history.pushState({}, null, '/work/commercial.html');
     }
     function cul() {
       console.log('culture');
-      history.replaceState({}, null, '/work/culture.html');
+      history.pushState({}, null, '/work/culture.html');
     }
     function adm() {
       console.log('administrative');
-      history.replaceState({}, null, '/work/administrative.html');
+      history.pushState({}, null, '/work/administrative.html');
     }
     function pub() {
       console.log('public');
-      history.replaceState({}, null, '/work/public_space.html');
+      history.pushState({}, null, '/work/public_space.html');
     }
     function int() {
       console.log('interior');
-      history.replaceState({}, null, '/work/interior.html');
+      history.pushState({}, null, '/work/interior.html');
     }
     function reloadPage() {
       // The last "domLoading" Time //
@@ -784,53 +785,77 @@
         });
       });
     });
-    this.window.onload = function () {
-      if (typeof history.pushState === "function") {
-        history.pushState("jibberish", null, null);
-        window.onpopstate = function () {
-          console.log('popstate');
-          history.pushState('', null, '/selected_work.html');
-          location.reload()
-          // Handle the back (or forward) buttons here
-          // Will NOT handle refresh, use onbeforeunload for this.
-        };
-      }
-      else {
-        var ignoreHashChange = true;
-        window.onhashchange = function () {
-          if (!ignoreHashChange) {
-            ignoreHashChange = true;
-            window.location.hash = Math.random();
-            // Detect and redirect change here
-            // Works in older FF and IE9
-            // * it does mess with your hash symbol (anchor?) pound sign
-            // delimiter on the end of the URL
-          }
-          else {
-            ignoreHashChange = false;
-          }
-        };
-      }
+    window.addEventListener('popstate', function(event) {
+    // The popstate event is fired each time when the current history entry changes.
+
+    var r = true;
+    alert('res')
+    if (r == true) {
+        // Call Back button programmatically as per user confirmation.
+        console.log('r is true');
+        location.pathname = '/selected_work.html'
+        // history.back();
+        // Uncomment below line to redirect to the previous page instead.
+        // window.location = document.referrer // Note: IE11 is not supporting this.
+    } else {
+        // Stay on the current page.
+        // history.pushState(null, null, window.location.pathname);
+        location.pathname = '/selected_work.html'
+
     }
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      this.window.onload = function () {
-        if (typeof history.pushState === "function") {
-          history.pushState("jibberish", null, null);
-          // history.pushState("jibberish", null, null);
-          window.onpopstate = function () {
-            console.log(location.pathname);
-            console.log('popstate');
-            history.pushState('', null, '/selected_work.html');
-            location.reload()
-            location.pathname = "selected_work.html";
-            // history.pushState('', null, '/selected_work.html');
-            // location.reload()
-            // Handle the back (or forward) buttons here
-            // Will NOT handle refresh, use onbeforeunload for this.
-          };
-        }
-      }
-    }
+    location.pathname = '/selected_work.html'
+
+        location.pathname = '/selected_work.html'
+    // history.pushState(null, null, window.location.pathname);
+
+}, false);
+    // this.window.onload = function () {
+    //   if (typeof history.pushState === "function") {
+    //     history.pushState("jibberish", null, null);
+    //     window.onpopstate = function () {
+    //       console.log('popstate');
+    //       history.pushState('', null, '/selected_work.html');
+    //       location.reload()
+    //       // Handle the back (or forward) buttons here
+    //       // Will NOT handle refresh, use onbeforeunload for this.
+    //     };
+    //   }
+    //   else {
+    //     var ignoreHashChange = true;
+    //     window.onhashchange = function () {
+    //       if (!ignoreHashChange) {
+    //         ignoreHashChange = true;
+    //         window.location.hash = Math.random();
+    //         // Detect and redirect change here
+    //         // Works in older FF and IE9
+    //         // * it does mess with your hash symbol (anchor?) pound sign
+    //         // delimiter on the end of the URL
+    //       }
+    //       else {
+    //         ignoreHashChange = false;
+    //       }
+    //     };
+    //   }
+    // }
+    // if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    //   this.window.onload = function () {
+    //     if (typeof history.pushState === "function") {
+    //       history.pushState("jibberish", null, null);
+    //       // history.pushState("jibberish", null, null);
+    //       window.onpopstate = function () {
+    //         console.log(location.pathname);
+    //         console.log('popstate');
+    //         history.pushState('', null, '/selected_work.html');
+    //         location.reload()
+    //         location.pathname = "selected_work.html";
+    //         // history.pushState('', null, '/selected_work.html');
+    //         // location.reload()
+    //         // Handle the back (or forward) buttons here
+    //         // Will NOT handle refresh, use onbeforeunload for this.
+    //       };
+    //     }
+    //   }
+    // }
   </script>
 
 </body>
