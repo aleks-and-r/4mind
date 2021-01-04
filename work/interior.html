@@ -763,22 +763,7 @@
       console.log('interior');
       // history.pushState({}, null, '/work/interior.html');
     }
-    function reloadPage() {
-      // The last "domLoading" Time //
-      var currentDocumentTimestamp =
-        new Date(performance.timing.domLoading).getTime();
-      // Current Time //
-      var now = Date.now();
-      // Ten Seconds //
-      var tenSec = 10 * 1000;
-      // Plus Ten Seconds //
-      var plusTenSec = currentDocumentTimestamp + tenSec;
-      if (now > plusTenSec) {
-        console.log('reloading');
-        location.reload();
-      } else { }
-    }
-    reloadPage();
+    
     $(document).ready(function () {
       $('.work_icon').on('click', function () {
         $('.work_list').toggle(1000, function () {
@@ -787,7 +772,6 @@
     });
     window.addEventListener('popstate', function(event) {
     // The popstate event is fired each time when the current history entry changes.
-alert('int')
     var r = true;
 
     if (r == true) {

@@ -85,7 +85,8 @@
           </a>
         </div>
         <div class="item">
-          <a  href="work/public_space.html">
+          <!-- <a  href="work/public_space.html"> -->
+          <a onclick="pub()"> 
             <div class="pic_1" style="background-image:url(images/category/05_public.jpg)"></div>
             <div class="fade_1"></div>
             <div class="title_1">Public Space</div>
@@ -211,6 +212,11 @@
       history.pushState({}, null, '/work/residential.html');
       location.reload()
     }
+    function pub() {
+      console.log('public_space');
+      history.pushState({}, null, '/work/public_space.html');
+      location.reload()
+    }
     function int() {
       console.log('interior');
       history.pushState({}, null, '/work/interior.html');
@@ -218,8 +224,7 @@
     }
     window.addEventListener('popstate', function (event) {
       // The popstate event is fired each time when the current history entry changes.
-      event.preventDefault();
-      alert('works')
+      event.preventDefault();      
       var r = true;
 
       if (r == true) {
@@ -236,71 +241,7 @@
       console.log('default');
       // history.pushState(null, null, window.location.pathname);
       location.pathname = '/main.html'
-    }, false);
-    // this.window.onload = function () {
-    //   if (typeof history.pushState === "function") {
-    //     // history.pushState("jibberish", null, null);
-    //     history.pushState("jibberish", null, '/selected_work.html');
-    //     console.log('set state: ', location.pathname);
-    //     alert('asd')
-    //     window.onpopstate = function () {
-    //       console.log(location.pathname);
-    //       console.log('popstate');
-    //       history.pushState('', null, '/main.html');
-    //       location.reload()
-    //       // Handle the back (or forward) buttons here
-    //       // Will NOT handle refresh, use onbeforeunload for this.
-    //     };
-    //   }
-    //   else {
-    //     var ignoreHashChange = true;
-    //     window.onhashchange = function () {
-    //       if (!ignoreHashChange) {
-    //         ignoreHashChange = true;
-    //         window.location.hash = Math.random();
-    //         // Detect and redirect change here
-    //         // Works in older FF and IE9
-    //         // * it does mess with your hash symbol (anchor?) pound sign
-    //         // delimiter on the end of the URL
-    //       }
-    //       else {
-    //         ignoreHashChange = false;
-    //       }
-    //     };
-    //   }
-    // }
-    // if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    //   this.window.onbeforeunload = function () {
-    //     if (typeof history.pushState === "function") {
-    //       // history.pushState('', null, '/main.html');          
-    //       history.pushState("jibberish", null, '/selected_work.html');
-    //       alert('set state: ', location.pathname);
-    //       window.onpopstate = function () {
-    //         console.log(location.pathname);
-    //         console.log('popstate');
-    //         history.pushState('', null, '/main.html');
-    //         location.reload()
-    //         // location.pathname = "/main.html";
-    //         // history.pushState('', null, '/selected_work.html');
-    //         // location.reload()
-    //         // Handle the back (or forward) buttons here
-    //         // Will NOT handle refresh, use onbeforeunload for this.
-    //       };
-    //     }
-    //   }
-    // }
-    // $(window).on("navigate", function (event, data) {
-    //   var direction = data.state.direction;
-    //   console.log(direction);
-    //   alert(direction)
-    //   if (direction == 'back') {
-    //     // do something
-    //     alert('alert back')
-    //   }
-    //   if (direction == 'forward') {
-    //     // do something else
-    //   }
-    // });
+    }, false);    
   </script>
 
 </body>

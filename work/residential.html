@@ -736,9 +736,9 @@
   <script src="../js/main.js"></script> <!-- Gem jQuery -->
 
   <script>
-setTimeout(() => {
+    setTimeout(() => {
       res();
-    }, 20) 
+    }, 20)
     function res() {
       console.log('residential');
       // history.pushState({page_id: "res"}, null, '/work/residential.html');
@@ -763,52 +763,51 @@ setTimeout(() => {
       console.log('interior');
       history.pushState({}, null, '/work/interior.html');
     }
-    function reloadPage() {
-      // The last "domLoading" Time //
-      var currentDocumentTimestamp =
-        new Date(performance.timing.domLoading).getTime();
-      // Current Time //
-      var now = Date.now();
-      // Ten Seconds //
-      var tenSec = 10 * 1000;
-      // Plus Ten Seconds //
-      var plusTenSec = currentDocumentTimestamp + tenSec;
-      if (now > plusTenSec) {
-        console.log('reloading');
-        location.reload();
-      } else { }
-    }
-    reloadPage();
+    // function reloadPage() {
+    //   // The last "domLoading" Time //
+    //   var currentDocumentTimestamp =
+    //     new Date(performance.timing.domLoading).getTime();
+    //   // Current Time //
+    //   var now = Date.now();
+    //   // Ten Seconds //
+    //   var tenSec = 10 * 1000;
+    //   // Plus Ten Seconds //
+    //   var plusTenSec = currentDocumentTimestamp + tenSec;
+    //   if (now > plusTenSec) {
+    //     console.log('reloading');
+    //     location.reload();
+    //   } else { }
+    // }
+    // reloadPage();
     $(document).ready(function () {
       $('.work_icon').on('click', function () {
         $('.work_list').toggle(1000, function () {
         });
       });
     });
-    window.addEventListener('popstate', function(event) {
-    // The popstate event is fired each time when the current history entry changes.
+    window.addEventListener('popstate', function (event) {
+      // The popstate event is fired each time when the current history entry changes.
 
-    var r = true;
-    alert('res')
-    if (r == true) {
+      var r = true;
+      if (r == true) {
         // Call Back button programmatically as per user confirmation.
         console.log('r is true');
         location.pathname = '/selected_work.html'
         // history.back();
         // Uncomment below line to redirect to the previous page instead.
         // window.location = document.referrer // Note: IE11 is not supporting this.
-    } else {
+      } else {
         // Stay on the current page.
         // history.pushState(null, null, window.location.pathname);
         location.pathname = '/selected_work.html'
 
-    }
-    location.pathname = '/selected_work.html'
+      }
+      location.pathname = '/selected_work.html'
 
-        location.pathname = '/selected_work.html'
-    // history.pushState(null, null, window.location.pathname);
+      // location.pathname = '/selected_work.html'
+      // history.pushState(null, null, window.location.pathname);
 
-}, false);
+    }, false);
     // this.window.onload = function () {
     //   if (typeof history.pushState === "function") {
     //     history.pushState("jibberish", null, null);
