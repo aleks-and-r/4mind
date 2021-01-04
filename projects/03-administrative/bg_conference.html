@@ -245,12 +245,13 @@
       // The popstate event is fired each time when the current history entry changes.
 
       var r = true;
-      // alert('adm 1')
+      alert('adm 1')
 
       if (r == true) {
         // Call Back button programmatically as per user confirmation.
         console.log('r is true');
-        location.pathname = '/work/administrative.html'
+        history.pushState({}, null, '/work/administrative.html');
+        location.reload()
         // history.back();
         // Uncomment below line to redirect to the previous page instead.
         // window.location = document.referrer // Note: IE11 is not supporting this.
