@@ -738,6 +738,7 @@
   <script>
     setTimeout(() => {
       com();
+      document.body.scrollTop = document.documentElement.scrollTop = 0; 
     }, 20)
     function res() {
       console.log('residential');

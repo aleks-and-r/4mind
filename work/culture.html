@@ -735,9 +735,10 @@
   <script src="../js/Pushing_Nav.js"></script> <!-- Resource jQuery -->
   <script src="../js/main.js"></script> <!-- Gem jQuery -->
 
-  <script>
+  <script>    
     setTimeout(() => {
       cul();
+      document.body.scrollTop = document.documentElement.scrollTop = 0; 
     }, 20) 
      function res() {
       console.log('residential');
