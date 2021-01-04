@@ -199,7 +199,8 @@
 
                 <li data-type="yellow" class="is-visible">
                   <div class="item">
-                    <a href="../projects/03-administrative/bg_conference.html">
+                    <!-- <a href="../projects/03-administrative/bg_conference.html"> -->
+                    <a onclick="conf()">
                       <div class="pic"
                         style="background-image:url(../images/projects/03-administrative/01-preview/sajam-01.jpg)"
                         alt="Conference Centre _ BELGRADE FAIR | Belgrade | author Ilja Mikitisin"></div>
@@ -281,7 +282,8 @@
 
                 <li data-type="yellow" class="is-visible">
                   <div class="item">
-                    <a href="../projects/03-administrative/minaqua.html">
+                    <!-- <a href="../projects/03-administrative/minaqua.html"> -->
+                    <a onclick="minaqua()">
                       <div class="pic"
                         style="background-image:url(../images/projects/03-administrative/01-preview/minaqua-01.jpg)"
                         alt="Head Office Building _ MINAQUA | Novi Sad | author Ilja Mikitisin"></div>
@@ -362,7 +364,8 @@
 
                 <li data-type="yellow" class="is-visible">
                   <div class="item">
-                    <a href="../projects/03-administrative/radnicka.html">
+                    <!-- <a href="../projects/03-administrative/radnicka.html"> -->
+                    <a onclick="radnicka()">
                       <div class="pic"
                         style="background-image:url(../images/projects/03-administrative/01-preview/radnicka-01.jpg)"
                         alt="Administrative Building _ MULTIFUCNTION CENTRE | Novi Sad | author Ilja Mikitisin"></div>
@@ -445,7 +448,8 @@
 
                 <li data-type="yellow" class="is-visible">
                   <div class="item">
-                    <a href="../projects/03-administrative/canu.html">
+                    <!-- <a href="../projects/03-administrative/canu.html"> -->
+                    <a onclick="canu()">
                       <div class="pic"
                         style="background-image:url(../images/projects/03-administrative/01-preview/canu-01.jpg)"
                         alt="National Academy of Science and Art _ CANU | Podgorica | author Ilja Mikitisin/ Igor Mikitisin">
@@ -527,7 +531,8 @@
 
                 <li data-type="yellow" class="is-visible">
                   <div class="item">
-                    <a href="../projects/03-administrative/matijevic.html">
+                    <!-- <a href="../projects/03-administrative/matijevic.html"> -->
+                    <a onclick="matijevic()">
                       <div class="pic"
                         style="background-image:url(../images/projects/03-administrative/01-preview/matijevic-01.jpg)"
                         alt="Office Building _ BOULEVARD | Novi Sad | Third Prize | author Ilja Mikitisin"></div>
@@ -608,7 +613,8 @@
 
                 <li data-type="yellow" class="is-visible">
                   <div class="item">
-                    <a href="../projects/03-administrative/it_centar.html">
+                    <!-- <a href="../projects/03-administrative/it_centar.html"> -->
+                    <a onclick="it()">
                       <div class="pic"
                         style="background-image:url(../images/projects/03-administrative/01-preview/it_centar-01.jpg)"
                         alt="Office Building _ IT CENTAR | Belgrade | author Igor Mikitisin"></div>
@@ -738,7 +744,7 @@
   <script>
     setTimeout(() => {
       adm();
-    }, 20) 
+    }, 20)
     function res() {
       console.log('residential');
       history.pushState({}, null, '/work/residential.html');
@@ -753,7 +759,7 @@
     }
     function adm() {
       console.log('administrative');
-      window.scrollTo(0, 0);
+      // window.scrollTo(0, 0);
       // history.pushState({'page_id': 'adm'}, null, '/work/administrative.html');
     }
     function pub() {
@@ -786,27 +792,57 @@
         });
       });
     });
-    window.addEventListener('popstate', function(event) {
-    // The popstate event is fired each time when the current history entry changes.
+    function conf() {
+      console.log('conf');
+      history.pushState({}, null, '/projects/03-administrative/bg_conference.html');
+      location.reload();
+    }
+    function canu() {
+      console.log('canu');
+      history.pushState({}, null, '/projects/03-administrative/canu.html');
+      location.reload();
+    }
+    function it() {
+      console.log('it_centar');
+      history.pushState({}, null, '/projects/03-administrative/it_centar.html');
+      location.reload();
+    }
+    function matijevic() {
+      console.log('matijevic');
+      history.pushState({}, null, '/projects/03-administrative/matijevic.html');
+      location.reload();
+    }
+    function minaqua() {
+      console.log('minaqua');
+      history.pushState({}, null, '/projects/03-administrative/minaqua.html');
+      location.reload();
+    }
+    function radnicka() {
+      console.log('radnicka');
+      history.pushState({}, null, '/projects/03-administrative/radnicka.html');
+      location.reload();
+    }
+    window.addEventListener('popstate', function (event) {
+      // The popstate event is fired each time when the current history entry changes.
 
-    var r = true;
-    alert('adm')
+      var r = true;
+      // alert('adm')
 
-    if (r == true) {
+      if (r == true) {
         // Call Back button programmatically as per user confirmation.
         console.log('r is true');
         location.pathname = '/selected_work.html'
         // history.back();
         // Uncomment below line to redirect to the previous page instead.
         // window.location = document.referrer // Note: IE11 is not supporting this.
-    } else {
+      } else {
         // Stay on the current page.
         history.pushState(null, null, window.location.pathname);
-    }
+      }
 
-    history.pushState(null, null, window.location.pathname);
+      history.pushState(null, null, window.location.pathname);
 
-}, false);
+    }, false);
     // this.window.onload = function () {
     //   if (typeof history.pushState === "function") {
     //     history.pushState("jibberish", null, null);

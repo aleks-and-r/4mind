@@ -236,7 +236,29 @@
 
   <script src="../../js/Pushing_Nav.js"></script> <!-- Resource jQuery -->
   <script src="../../js/Back_To_Top.js"></script> <!-- Resource JavaScript -->
+<script>
+  window.addEventListener('popstate', function (event) {
+      // The popstate event is fired each time when the current history entry changes.
 
+      var r = true;
+      // alert('adm 1')
+
+      if (r == true) {
+        // Call Back button programmatically as per user confirmation.
+        console.log('r is true');
+        location.pathname = '/work/administrative.html'
+        // history.back();
+        // Uncomment below line to redirect to the previous page instead.
+        // window.location = document.referrer // Note: IE11 is not supporting this.
+      } else {
+        // Stay on the current page.
+        history.pushState(null, null, window.location.pathname);
+      }
+
+      history.pushState(null, null, window.location.pathname);
+
+    }, false);
+</script>
 </body>
 
 </html>
